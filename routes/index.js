@@ -9,8 +9,19 @@ router.get('/', function(req, res, next) {
 
 /* GET About-Us page. */
 router.get('/about-us', function(req, res, next) {
-  var changed = true;
-  res.render('about-us', { title: 'About Us' });
+  res.render('about-us', {
+    title: 'About Us',
+    name: 'Chris Naismith',
+    company: {
+      name: 'Smash Reality',
+      city: 'Collingwood'
+    },
+    age: 23,
+    college: {
+      program: 'COPA'
+    },
+    likes: ['Cats', 'Rocket League', 'React', 'Food']
+  });
 });
 
 /* GET Contact-Us page. */

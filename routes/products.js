@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/products', function(request, response) {
+router.get('/', function(request, response) {
   response.render('products', {});
 });
 
-router.get('/products/:id', function(request, response) {
+router.get('/:id', function(request, response) {
   response.render('product', {});
 });
 
