@@ -32,8 +32,9 @@ router.get('/contact-us', function(req, res, next) {
 
 /* GET Contact-Us page. */
 router.post('/contact-us', function(request, response, next) {
-  const body = request.body;
-  fs.writeFile('/submitted.txt', JSON.stringify(request.body), function(error) {
+  fs.writeFile('./submitted.txt', JSON.stringify(request.body), function(
+    error
+  ) {
     return response.render('contact-us', {
       failure: error,
       success: !error,
