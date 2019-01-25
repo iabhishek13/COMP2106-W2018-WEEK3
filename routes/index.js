@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const fs = require('fs');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -26,8 +27,19 @@ router.get('/about-us', function(req, res, next) {
 
 /* GET Contact-Us page. */
 router.get('/contact-us', function(req, res, next) {
-  var changed = true;
   res.render('contact-us', { title: 'Contact Us' });
+});
+
+/* GET Contact-Us page. */
+router.post('/contact-us', function(request, response, next) {
+  const body = request.body;
+  fs.writeFile('/submitted.txt', JSON.stringify(request.body), function(error) {
+    return response.render('contact-us', {
+      failure: error,
+      success: !error,
+      title: 'Contact Us'
+    });
+  });
 });
 
 module.exports = router;
